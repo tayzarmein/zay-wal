@@ -8,8 +8,8 @@ info:
 servers:
 - url: http://localhost:8000/v1
 tags:
-- name: pet
-  description: Everything about your Pets
+- name: Item
+  description: Everything about Items
   externalDocs:
     description: Find out more
     url: http://swagger.io
@@ -23,6 +23,8 @@ tags:
 paths:
   /popular-items:
     get:
+      tags:
+      - Item
       summary: Get Popular Items
       responses:
         200:
