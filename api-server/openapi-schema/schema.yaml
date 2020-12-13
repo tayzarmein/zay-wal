@@ -7,19 +7,7 @@ info:
   version: 1.0.0
 servers:
 - url: http://localhost:8000/v1
-tags:
-- name: Item
-  description: Everything about Items
-  externalDocs:
-    description: Find out more
-    url: http://swagger.io
-- name: store
-  description: Access to Petstore orders
-- name: user
-  description: Operations about user
-  externalDocs:
-    description: Find out more about our store
-    url: http://swagger.io
+
 paths:
   /popular-items:
     get:
