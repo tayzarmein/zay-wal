@@ -37,12 +37,12 @@ jobs:
 #       run: |
 #         mkdir -p database
 #         touch database/database.sqlite
-    - name: Sleep 5 seconds
-      run: sleep 5
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_HOST: 127.0.0.1
         DB_PORT: 3306
+        DB_USERNAME: test
+        DB_PASSWORD: 1234
       run: vendor/bin/phpunit
       
 #   react-tests:
