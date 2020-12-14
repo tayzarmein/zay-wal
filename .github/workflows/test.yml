@@ -12,6 +12,15 @@ jobs:
     defaults:
       run:
         working-directory: ./api-server
+    
+    services:
+      mysql_test_db: 
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: api_server_test
+          MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+          MYSQL_USER: test
+          MYSQL_PASSWORD: "1234"
 
     steps:
     - uses: actions/checkout@v2
