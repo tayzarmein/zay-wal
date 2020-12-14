@@ -1,4 +1,4 @@
-![Laravel](https://github.com/tayzarmein/zay-wal/workflows/Laravel/badge.svg?branch=master)
+![Tests](https://github.com/tayzarmein/zay-wal/workflows/tests/badge.svg?branch=master)
 
 ## Instructions
 
