@@ -8,7 +8,6 @@ jobs:
   laravel-tests:
 
     runs-on: ubuntu-latest
-    container: ubuntu:latest
     
     defaults:
       run:
@@ -17,12 +16,13 @@ jobs:
     services:
       mysql_test_db: 
         image: mysql:8.0
+        ports: 
+          - 3306:3306
         env:
           MYSQL_DATABASE: api_server_test
           MYSQL_RANDOM_ROOT_PASSWORD: "yes"
           MYSQL_USER: test
           MYSQL_PASSWORD: "1234"
-
     steps:
     - uses: actions/checkout@v2
     - name: Copy .env
@@ -38,9 +38,8 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
-#       env:
-#         DB_CONNECTION: sqlite
-#         DB_DATABASE: database/database.sqlite
+      env:
+        DB_HOST: localhost:3306
       run: vendor/bin/phpunit
       
 #   react-tests:
