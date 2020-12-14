@@ -6,7 +6,8 @@
 
 - Clone the repository.
 - Install docker and docker compose.
-- Change to ./api-server and run `composer install`
+- Change to ./api-server and run    `docker run -it -v $PWD:/app --rm --user $(id -u):$(id -g) 
+  composer install`
 - Change to ./web and run `npm install`
 
 ### For Frontend
