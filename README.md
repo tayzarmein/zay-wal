@@ -1,3 +1,5 @@
+![Laravel](https://github.com/tayzarmein/zay-wal/workflows/Laravel/badge.svg?branch=master)
+
 ## Instructions
 
 ### Initial Setup
