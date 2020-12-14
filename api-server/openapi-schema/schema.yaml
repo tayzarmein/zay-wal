@@ -7,6 +7,8 @@ info:
 
 servers:
   - url: http://localhost:8000/api/
+  - url: https://staging.zaywal.com/api/
+  - url: https://api.zaywal.com/
 
 paths:
   /items:
@@ -24,7 +26,6 @@ paths:
               schema:
                 $ref: "#components/schemas/Item"
           description: Successful response code should be 200 with created item
-
     get:
       summary: Get Items
       responses:
@@ -36,7 +37,6 @@ paths:
                 type: array
                 items:
                   $ref: "#components/schemas/Item"
-
   /items/{itemId}:
     get:
       summary: Get Item by ID
@@ -54,6 +54,38 @@ paths:
                 $ref: "#components/schemas/Item"
           description: Item
 
+  /suppliers:
+    post:
+      summary: Create a supplier
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "#components/schemas/Supplier"
+            example:
+              name: U Ba
+              phoneNumber: 09123456789
+      responses:
+        201:
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/Supplier"
+
+  /purchases:
+    post:
+      summary: Create a purchase
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Purchase"
+      responses:
+        201:
+          description: Successful Response
+          
+          
 components:
   schemas:
     Item:
@@ -68,3 +100,42 @@ components:
           type: string
         price:
           type: integer
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        phoneNumber:
+          type: number
+    Purchase:
+      type: object
+      properties:
+        date: 
+          type: string
+          format: date
+        invoiceNumber:
+          type: string
+        supplierId:
+          type: integer
+        items:
+          description: Purchased Products
+          type: array
+          items:
+            $ref: "#components/schemas/PurchasedProduct"
+    PurchasedProduct:
+      type: object
+      properties:
+        productId:
+          type: integer
+        price:
+          type: integer
+        qty:
+          type: integer
+      
+
+
+
+
