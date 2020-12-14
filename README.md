@@ -1,4 +1,4 @@
-![Tests](https://github.com/tayzarmein/zay-wal/workflows/tests/badge.svg?branch=master)
+![Tests](https://github.com/tayzarmein/zay-wal/workflows/Tests/badge.svg?branch=master&event=push)
 
 ## Instructions
 
