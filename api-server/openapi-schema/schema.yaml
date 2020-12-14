@@ -9,21 +9,54 @@ servers:
 - url: http://localhost:8000/api/
 
 paths:
-  /items:
-    post:
-      summary: Create new Item
-      requestBody:
-        content:
-            application/json:
-                schema:
-                    $ref: '#/components/schemas/Item'
-      responses:
-          201: 
-              content: 
-                  application:/json:
-                      schema:
-                          $ref: '#components/schemas/Item'
-              description: Successful resposne code should be 200 with created item
+
+    /items:
+        post:
+            summary: Create new Item
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Item'
+            responses:
+                201: 
+                    content: 
+                        application:/json:
+                            schema:
+                                $ref: '#components/schemas/Item'
+                    description: Successful response code should be 200 with created item
+
+    get:
+        summary: Get Items
+        responses:
+            200:
+                description: Array of Items
+                content:
+                    application/json:
+                        schema:
+                            type: array
+                            items:
+                                $ref: '#components/schemas/Item'
+    
+    
+    
+  /items/{itemId}:
+    get:
+        summary: Get Item by ID
+        parameters:
+        -   name: itemId
+            in: path
+            required: true
+            schema:
+                type: integer
+        responses:
+            200:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#components/schemas/Item'
+                description: Item
+
 
             
 components:
