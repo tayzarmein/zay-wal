@@ -153,9 +153,11 @@ components:
           type: string
         price:
           type: integer
-        photo:
-          type: string
-          format: binary
+        photo[]:
+          type: array
+          items:
+            type: string
+            format: binary
     Supplier:
       type: object
       properties:
