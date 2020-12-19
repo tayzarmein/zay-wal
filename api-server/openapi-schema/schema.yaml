@@ -84,6 +84,59 @@ paths:
       responses:
         201:
           description: Successful Response
+
+  /inventory:
+    get:
+      summary: Get an inventory
+      responses:
+        200:
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    category:
+                      type: string
+                    description:
+                      type: string
+                    unit:
+                      type: string
+                    inventory_price_per_unit:
+                      type: integer
+                    qty:
+                      type: integer
+                    sale_price_per_unit:
+                      type: integer
+                    photo:
+                      type: string
+                      format: url
+                example:
+                  - id: 1
+                    name: ငါးကြင်း
+                    category: meat
+                    description: ငါးကြင်း
+                    unit: ၁၀ သား
+                    inventory_price_per_unit: 1800
+                    qty: 4
+                    sale_price_per_unit: 2000
+                    photo: http://url/photos/12312311232
+                  - id: 2
+                    name: ကန်စွန်းရွက်
+                    category: vegetables
+                    description: ကန်စွန်းရွက်
+                    unit: စည်း
+                    inventory_price_per_unit: 200
+                    qty: 10
+                    sale_price_per_unit: 300
+                    photo: http://url/photos/12312312111
+
           
           
 components:
