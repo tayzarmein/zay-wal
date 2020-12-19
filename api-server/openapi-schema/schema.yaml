@@ -16,7 +16,7 @@ paths:
       summary: Create new Item
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: "#/components/schemas/Item"
       responses:
@@ -153,6 +153,9 @@ components:
           type: string
         price:
           type: integer
+        photo:
+          type: string
+          format: binary
     Supplier:
       type: object
       properties:
