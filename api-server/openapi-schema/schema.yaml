@@ -137,6 +137,20 @@ paths:
                     sale_price_per_unit: 300
                     photo: http://url/photos/12312312111
 
+  /cart
+    post:
+      summary: Create a cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  
+                
+
           
           
 components:
