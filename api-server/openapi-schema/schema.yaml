@@ -12,6 +12,11 @@ servers:
 
 paths:
   /items:
+    get:
+      summary: Get Items
+    parameters:
+      - name: page
+        in: query
     post:
       summary: Create new Item
       requestBody:

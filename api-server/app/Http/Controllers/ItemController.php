@@ -25,13 +25,51 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
+        $url = env("APP_URL", "http://127.0.0.1") . ":" . env("APP_PORT", "8000");
+
+        // dd($request->all());
         $item = new Item();
         $item->name = $request->name;
         $item->description = $request->description;
         $item->price = $request->price;
+        $item->category_id = $request->category_id;
+        $item->qty = $request->qty;
+        $photos = $request->photo;
+
+        $photoPaths = [];
+
+        foreach ($photos as $key => $photo) {
+            $path = $photo->store("/");
+            array_push($photoPaths, $path);
+        };
+
+        $jsonEncodedPath = json_encode($photoPaths);
+
+        if ($jsonEncodedPath) {
+            $item->photos = $jsonEncodedPath;
+        }
+
         $item->save();
 
-        return $item;
+        $photoFileNames = json_decode($item->photos);
+        $photoUrls = [];
+
+        foreach ($photoFileNames as $key => $eachphotoFileNames) {
+            array_push($photoUrls, $eachphotoFileNames);
+        }
+        return [
+            'id' => $item->id,
+            'name' => $item->name,
+            'description' => $item->description,
+            'price' => $item->price,
+            'qty' => $item->qty,
+            'category_id' => $item->category_id,
+            'photos' => array(
+                $url . "/photos/" . $photoUrls[0],
+                $url . "/photos/" . $photoUrls[1]
+            ),
+
+        ];
     }
 
     /**
@@ -42,7 +80,9 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        $result = $item->all();
+        
+        return $result;
     }
 
     /**
@@ -66,5 +106,11 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+    }
+
+    public function FindItem($id)
+    {
+        $itemList = Item::find($id);
+        return $itemList;
     }
 }
