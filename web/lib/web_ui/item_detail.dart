@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web/appBar_title.dart';
+import 'package:web/web_ui/appBar_title.dart';
 
 class ItemDetail extends StatelessWidget {
   @override

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:web/dashboard.dart';
-import 'package:web/product_page.dart';
+import 'package:web/web_admin_panel/dashboard.dart';
 
 void main() {
   runApp(MyApp());

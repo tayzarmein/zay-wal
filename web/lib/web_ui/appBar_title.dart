@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:web/home_page.dart';
-import 'package:web/official_store.dart';
+import 'package:web/web_ui/home_page.dart';
+import 'package:web/web_ui/official_store.dart';
 
 class Titles extends StatelessWidget {
   @override

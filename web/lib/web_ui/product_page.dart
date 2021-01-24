@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:web/appBar_title.dart';
-import 'package:web/item.dart';
-import 'package:web/item_detail.dart';
+import 'package:web/web_ui/appBar_title.dart';
+import 'package:web/web_ui/item.dart';
+import 'package:web/web_ui/item_detail.dart';
 
 class ProductPage extends StatefulWidget {
   ProductPage(this.myProductName);
