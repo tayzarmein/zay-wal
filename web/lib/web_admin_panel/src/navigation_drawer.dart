@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:web/web_admin_panel/category.dart';
 import 'package:web/web_admin_panel/order.dart';
+import 'package:web/web_admin_panel/product.dart';
 
 class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({
@@ -18,10 +19,10 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     Order(),
     Order(),
     Category(),
-    Category(),
-    Category(),
-    Category(),
-    Category(),
+    Product(),
+    Text('Comming Soon'),
+    Text('Comming Soon'),
+    Text('Comming Soon'),
   ];
 
   @override
