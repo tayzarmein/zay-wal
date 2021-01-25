@@ -1,73 +1,67 @@
 import 'package:flutter/material.dart';
 import 'package:web/web_admin_panel/category.dart';
-import 'package:web/web_admin_panel/dashboard.dart';
-import 'package:web/web_ui/home_page.dart';
+import 'package:web/web_admin_panel/order.dart';
 
-class NavigationDrawer extends StatelessWidget {
+class NavigationDrawer extends StatefulWidget {
   const NavigationDrawer({
     Key key,
   }) : super(key: key);
 
   @override
+  _NavigationDrawerState createState() => _NavigationDrawerState();
+}
+
+class _NavigationDrawerState extends State<NavigationDrawer> {
+  int selectedIndex = 0;
+
+  var list = [
+    Order(),
+    Order(),
+    Category(),
+    Category(),
+    Category(),
+    Category(),
+    Category(),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        children: <Widget>[
-          DrawerHeader(child: Text('Header')),
-          ListTile(
-            leading: Icon(Icons.dashboard),
-            title: Text('Dashboard'),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Dashboard()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.shopping_cart),
-            title: Text('Orders'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.category),
-            title: Text('Categories'),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Category()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.add_shopping_cart),
-            title: Text('Products'),
-            onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Category()));
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.people),
-            title: Text('Customers'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.data_usage),
-            title: Text('Reports'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: Icon(Icons.integration_instructions),
-            title: Text('Integrations'),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          )
-        ],
-      ),
+    return Row(
+      children: [
+        NavigationRail(
+          labelType: NavigationRailLabelType.all,
+          destinations: [
+            NavigationRailDestination(
+              icon: Icon(Icons.dashboard),
+              label: Text('Dashboard'),
+            ),
+            NavigationRailDestination(
+                icon: Icon(Icons.shopping_cart), label: Text('Orders')),
+            NavigationRailDestination(
+                icon: Icon(Icons.category), label: Text('Category')),
+            NavigationRailDestination(
+                icon: Icon(Icons.add_shopping_cart), label: Text('Products')),
+            NavigationRailDestination(
+                icon: Icon(Icons.people), label: Text('Customers')),
+            NavigationRailDestination(
+                icon: Icon(Icons.data_usage), label: Text('Report')),
+            NavigationRailDestination(
+                icon: Icon(Icons.integration_instructions),
+                label: Text('Integrations'))
+          ],
+          selectedIndex: selectedIndex,
+          onDestinationSelected: (int index) {
+            setState(() {
+              selectedIndex = index;
+            });
+          },
+        ),
+        Expanded(
+            child: Container(
+          // color: Colors.grey,
+          child: Center(child: list[selectedIndex]),
+        ))
+      ],
     );
   }
 }
