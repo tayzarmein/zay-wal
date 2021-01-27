@@ -2,7 +2,27 @@ import 'package:flutter/material.dart';
 import 'src/all_data_table.dart';
 import 'src/page_number.dart';
 
-class Category extends StatelessWidget {
+class NewCategoryDialog extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SimpleDialog(
+      title: Text("Add a Category"),
+      children: <Widget>[Text("Name")],
+    );
+  }
+}
+
+class Category extends StatefulWidget {
+  @override
+  _CategoryState createState() => _CategoryState();
+}
+
+class _CategoryState extends State<Category> {
+  Future _onPressAddCategoryBtn() async {
+    showDialog<NewCategoryDialog>(
+        context: context, builder: (context) => NewCategoryDialog());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +39,7 @@ class Category extends StatelessWidget {
                 ),
                 SizedBox(width: 700),
                 FlatButton(
-                  onPressed: () {},
+                  onPressed: _onPressAddCategoryBtn,
                   child: Text('Add Category'),
                   color: Colors.blue,
                 ),
