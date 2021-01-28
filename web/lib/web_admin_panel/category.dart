@@ -7,7 +7,41 @@ class NewCategoryDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return SimpleDialog(
       title: Text("Add a Category"),
-      children: <Widget>[Text("Name")],
+      children: <Widget>[
+        TextFormField(
+          decoration: InputDecoration(
+              labelText: 'Name',
+              labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
+        ),
+        TextFormField(
+          decoration: InputDecoration(labelText: 'Position'),
+        ),
+        TextFormField(
+          decoration: InputDecoration(labelText: 'Status'),
+        ),
+        TextFormField(
+          decoration: InputDecoration(labelText: 'No of Products'),
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FlatButton(
+                color: Colors.blue,
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('Cancel')),
+            SizedBox(
+              width: 10,
+            ),
+            FlatButton(
+                color: Colors.blue, onPressed: () {}, child: Text('Save'))
+          ],
+        )
+      ],
     );
   }
 }
